@@ -63,17 +63,6 @@ echo "lxc.idmap = g 0 $subUid 65536" >> /var/lib/lxc/${CT}/config
 echo "kernel.unprivileged_userns_clone=1" > /etc/sysctl.d/80-lxc-userns.conf
 sysctl --system
 
-## Update the default config for AppArmor
-cat <<EOF >> /etc/lxc/default.conf
-
-lxc.apparmor.allow_incomplete = 1
-EOF
-
-cat <<EOF >> /etc/lxc/default-privileged.conf
-
-lxc.apparmor.allow_incomplete = 1
-EOF
-
 ## Starting container
 lxc-start ${CT}
 
