@@ -17,6 +17,21 @@ sudo ./convert.sh
 ```
 This also replace the fuidshift of Ubuntu LXD for all Debian based distribution
 
+## Apparmor
+Is necessary to update the default config for AppArmor LXC
+```
+cat <<EOF >> /etc/lxc/default.conf
+
+lxc.apparmor.allow_incomplete = 1
+EOF
+```
+```
+cat <<EOF >> /etc/lxc/default-privileged.conf
+
+lxc.apparmor.allow_incomplete = 1
+EOF
+```
+
 ## Note for debian version
 This script is valid for debian 10 / 11. For older debian is necessary change Apparmor variable:
 ```
