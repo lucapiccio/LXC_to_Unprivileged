@@ -32,7 +32,7 @@ lxc.apparmor.allow_incomplete = 1
 EOF
 ```
 
-## Note for debian version
+### Note for debian version
 This script is valid for debian 10 / 11. For older debian is necessary change Apparmor variable:
 ```
 lxc.apparmor.allow_incomplete = 1
