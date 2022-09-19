@@ -1,5 +1,7 @@
 #!/bin/bash
-
+#
+# prerequisites? : apt install lxc libvirt0 libpam-cgroup libpam-cgfs bridge-utils
+#
 if [ ! "$#" -eq 1 ] ;
 then
         echo -e "\e[31mScript for set container as unprivileged \e[39m"
@@ -56,6 +58,10 @@ chown root:root /etc/ssl/private
 echo "lxc.include = /usr/share/lxc/config/debian.userns.conf" >> /var/lib/lxc/${CT}/config
 echo "lxc.idmap = u 0 $subUid 65536" >> /var/lib/lxc/${CT}/config
 echo "lxc.idmap = g 0 $subUid 65536" >> /var/lib/lxc/${CT}/config
+
+## Enabling user namespaces
+echo "kernel.unprivileged_userns_clone=1" > /etc/sysctl.d/80-lxc-userns.conf
+sysctl --system
 
 ## Starting container
 lxc-start ${CT}
