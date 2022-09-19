@@ -9,3 +9,12 @@ sudo ./convert.sh
 ```
 This also replace the fuidshift of Ubuntu LXD for all Debian based distribution
 
+Note for debian version:
+This script is valid for debian 10 / 11. For older debian is necessary change Apparmor variable:
+```
+lxc.apparmor.allow_incomplete = 1
+```
+to
+```
+lxc.aa_allow_incomplete = 1
+```
