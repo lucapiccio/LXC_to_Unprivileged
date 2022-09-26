@@ -13,7 +13,7 @@ sudo chmod 755 ./convert.sh
 ## Execution
 Need execution as root user or with sudo
 ```
-sudo ./convert.sh
+sudo ./convert.sh nameofconainer
 ```
 This also replace the fuidshift of Ubuntu LXD for all Debian based distribution
 
